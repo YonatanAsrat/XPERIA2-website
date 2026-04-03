@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xperia | Innovation in Food & Nutrition</title>
+    <style>
+        :root { --xperia-blue: #2c3e50; --enebla-green: #27ae60; --menyeqrab-orange: #e67e22; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: #333; line-height: 1.6; background: #fdfdfd; }
+        
+        .hero { background: var(--xperia-blue); color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; font-weight: 800; }
+        .hero p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; text-transform: uppercase; }
+
+        .story { max-width: 900px; margin: 50px auto; padding: 0 20px; text-align: center; }
+        .story h2 { color: var(--xperia-blue); font-size: 2.2rem; margin-bottom: 20px; }
+        .story p { font-size: 1.1rem; color: #444; margin-bottom: 15px; }
+
+        /* Side-by-Side Brand Sections */
+        .brand-about-container { 
+            display: flex; gap: 30px; max-width: 1200px; margin: 40px auto; padding: 0 20px; 
+            text-align: left;
+        }
+        .brand-about-col { flex: 1; padding: 30px; background: #fff; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 4px solid #eee; display: flex; flex-direction: column; }
+        .brand-about-col.enebla { border-top-color: var(--enebla-green); }
+        .brand-about-col.menyeqrab { border-top-color: var(--menyeqrab-orange); }
+        
+        .brand-about-col h3 { margin-top: 0; font-size: 1.6rem; margin-bottom: 10px; }
+        .brand-about-col h4 { font-size: 0.85rem; text-transform: uppercase; color: #888; margin: 15px 0 5px; letter-spacing: 1px; }
+        .brand-about-col p { color: #555; font-size: 0.95rem; margin-bottom: 10px; flex-grow: 1; }
+
+        .divider { 
+            max-width: 800px; margin: 60px auto; border: 0; height: 1px; 
+            background: linear-gradient(to right, transparent, #ccc, transparent);
+        }
+
+        .offerings-title { text-align: center; margin-bottom: 40px; color: var(--xperia-blue); font-size: 1.8rem; }
+        .brands-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 0 20px 80px; max-width: 1200px; margin: 0 auto; }
+        
+        .brand-card { 
+            background: white; border-radius: 20px; width: 320px; padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
+            transition: 0.4s ease; border: 1px solid #eee;
+        }
+        .brand-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .brand-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        .btn { 
+            display: inline-block; padding: 12px 35px; border-radius: 30px; 
+            text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .enebla h3 { color: var(--enebla-green); }
+        .enebla .btn { border: 2px solid var(--enebla-green); color: var(--enebla-green); }
+        .enebla .btn:hover { background: var(--enebla-green); color: white; }
+
+        .menyeqrab h3 { color: var(--menyeqrab-orange); }
+        .menyeqrab .btn { border: 2px solid var(--menyeqrab-orange); color: var(--menyeqrab-orange); }
+        .menyeqrab .btn:hover { background: var(--menyeqrab-orange); color: white; }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>XPERIA</h1>
+        <p>Moments That Define</p>
+    </header>
+
+    <section class="story">
+        <h2>About Xperia</h2>
+        <p>Born from a genuine passion for redefining how people experience life, Xperia was created to fill a void in the Ethiopian experience landscape. We envision gatherings as transformative journeys that touch the soul and leave an indelible memory.</p>
+        <p>Our mission is to deliver more than just gatherings by redefining experiences through predictive personalization, immersive multisensory encounters, and holistic theme integration.</p>
+    </section>
+
+    <div class="brand-about-container">
+        <div class="brand-about-col enebla">
+            <h3 style="color: var(--enebla-green);">Enebla Catering</h3>
+            
+            <h4>Overview</h4>
+            <p>Enebla is a specialized one-stop experiential service dedicated exclusively to children's celebrations. We integrate themed culinary arts with immersive entertainment and global sourcing to create seamless experiences for modern parents.</p>
+
+            <h4>Our Mission</h4>
+            <p>To transform children's events by executing hyper-personalized, themed catering that marries balanced meals with logistically seamless entertainment.</p>
+
+            <h4>Our Vision</h4>
+            <p>To become the regional benchmark for immersive children's experiences, where every child feels like the hero of their own story.</p>
+        </div>
+
+        <div class="brand-about-col menyeqrab">
+            <h3 style="color: var(--menyeqrab-orange);">MenYeqrab Foods</h3>
+
+            <h4>Overview</h4>
+            <p>MenYeqrab is a hybrid meal kit and digital food platform that merges ready-made convenience with personalized meal planning. We provide everything from raw ingredients and pre-prepped kits to chef-cooked meals and student lunchboxes.</p>
+
+            <h4>Our Mission</h4>
+            <p>To empower families to enjoy hassle-free, nutritious meals tailored to their lifestyle through innovative meal plans and a supportive culinary community.</p>
+
+            <h4>Our Vision</h4>
+            <p>To become the leading platform that bridges the gap between convenience and home-cooked meals, fostering healthier eating habits and stronger cooking skills.</p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <h2 class="offerings-title">Select a Service</h2>
+    <div class="brands-container">
+        <div class="brand-card enebla">
+            <h3>Enebla Catering</h3>
+            <p style="color: #777; margin-bottom: 25px;">Themed culinary arts & immersive entertainment.</p>
+            <a href="offerings.html?brand=enebla" class="btn">Explore Subscriptions</a>
+        </div>
+
+        <div class="brand-card menyeqrab">
+            <h3>MenYeqrab Foods</h3>
+            <p style="color: #777; margin-bottom: 25px;">Hybrid meal kits & digital food platforms.</p>
+            <a href="offerings.html?brand=menyeqrab" class="btn">Explore Subscriptions</a>
+        </div>
+    </div>
+
+</body>
+</html>

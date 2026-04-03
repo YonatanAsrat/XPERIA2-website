@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xperia | Specialized Offerings</title>
+    <style>
+        :root { --xperia-blue: #2c3e50; --enebla-green: #27ae60; --menyeqrab-orange: #e67e22; --menyeqrab-purple: #9b59b6; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fdfdfd; margin: 0; padding: 20px; text-align: center; color: #333; }
+        
+        .section-title { margin: 40px 0; color: var(--xperia-blue); font-size: 2.2rem; font-weight: bold; }
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto 40px; }
+        
+        /* Card Styling to match X4.png & X5.png */
+        .card { background: white; padding: 25px; border-radius: 15px; width: 260px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; border-top: 5px solid #ccc; }
+        .card.enebla { border-top-color: var(--enebla-green); }
+        .card.menyeqrab { border-top-color: var(--menyeqrab-orange); }
+        .card.special { border-top-color: var(--menyeqrab-purple); }
+
+        .price { font-size: 1.3rem; font-weight: bold; margin: 10px 0; color: #333; }
+        .details { font-size: 0.85rem; color: #666; margin-bottom: 20px; min-height: 40px; }
+        .btn { width: 100%; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: var(--xperia-blue); color: white; transition: 0.3s; }
+
+        /* Navigation */
+        .back-nav { margin: 50px 0; }
+        .back-btn { background: #eee; border: none; padding: 10px 20px; border-radius: 20px; color: #333; cursor: pointer; font-weight: bold; }
+
+        /* Modal Styles */
+        #orderModal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: white; padding: 25px; border-radius: 20px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: left; }
+        
+        .form-input { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+        .field-label { display: block; font-size: 0.75rem; font-weight: bold; color: var(--xperia-blue); margin-bottom: 5px; text-transform: uppercase; margin-top: 10px; }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; font-size: 0.85rem; }
+        .submit-btn { color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1 class="section-title">Our Specialized Offerings</h1>
+
+    <div id="enebla-section" style="display:none;">
+        <h2 style="color: var(--enebla-green);">Enebla | Event Catering</h2>
+        <div class="grid">
+            <div class="card enebla"><h3>Classic Pack</h3><div class="price">500 ETB/person</div><div class="details">Themed Catering + Setup</div><button class="btn" onclick="openModal('Classic Pack')">Select Plan</button></div>
+            <div class="card enebla"><h3>Immersive Pack</h3><div class="price">750 ETB/person</div><div class="details">Advanced Theme + Games</div><button class="btn" onclick="openModal('Immersive Pack')">Select Plan</button></div>
+            <div class="card enebla"><h3>Elite Pack</h3><div class="price">1,000 ETB/person</div><div class="details">VIP Service + Photography</div><button class="btn" onclick="openModal('Elite Pack')">Select Plan</button></div>
+        </div>
+    </div>
+
+    <div id="menyeqrab-section" style="display:none;">
+        <h2 style="color: var(--menyeqrab-orange);">MenYeqrab | Subscription Plans</h2>
+        <div class="grid">
+            <div class="card menyeqrab"><h3>Basic</h3><div class="price">500 ETB/mo</div><div class="details">Meal Plan + Digital Book</div><button class="btn" onclick="openModal('Basic')">Select Plan</button></div>
+            <div class="card menyeqrab"><h3>Starter</h3><div class="price">750 ETB/mo</div><div class="details">Plan + Shopping Service</div><button class="btn" onclick="openModal('Starter')">Select Plan</button></div>
+            <div class="card menyeqrab"><h3>Easier</h3><div class="price">1,000 ETB/mo</div><div class="details">Prepped Ingredients</div><button class="btn" onclick="openModal('Easier')">Select Plan</button></div>
+            <div class="card menyeqrab"><h3>Ready-Made</h3><div class="price">1,500 ETB/mo</div><div class="details">Chef-Cooked Meals</div><button class="btn" onclick="openModal('Ready-Made')">Select Plan</button></div>
+            <div class="card special"><h3>Kids Lunchbox</h3><div class="price">1,500 ETB/mo</div><div class="details">Daily Ready Lunchbox</div><button class="btn" style="background: var(--menyeqrab-purple);" onclick="openModal('Kids Lunchbox')">Select Plan</button></div>
+        </div>
+    </div>
+
+    <div class="back-nav">
+        <button class="back-btn" onclick="window.location.href='index.html'">Go Back</button>
+    </div>
+
+    <div id="orderModal">
+        <div class="modal-content">
+            <h3 id="planTitle" style="color: var(--xperia-blue); margin-top: 0;">Plan Name</h3>
+            <form id="subscriptionForm">
+                
+                <div id="enebla-fields" style="display:none;">
+                    <input type="text" id="e_name" placeholder="Name" class="form-input">
+                    <input type="tel" id="e_phone" placeholder="Phone Number" class="form-input">
+                    <input type="text" id="e_kid" placeholder="Birthday Kid's Name" class="form-input">
+                    <input type="number" id="e_count" placeholder="Total Attendees (Kids & Adults)" class="form-input">
+                    <input type="text" id="e_loc" placeholder="Event Location" class="form-input">
+                    <div style="display: flex; gap: 5px;">
+                        <input type="date" id="e_date" class="form-input">
+                        <input type="time" id="e_time" class="form-input">
+                    </div>
+                    <label class="field-label">Event Theme</label>
+                    <select id="e_theme" class="form-input">
+                        <option>🦸 Superheroes</option>
+                        <option>👑 Princess & Fairytale</option>
+                        <option>🚗 Cars & Construction</option>
+                        <option>🦖 Dinosaurs</option>
+                        <option>🎨 Arts & Crafts Party</option>
+                    </select>
+                    <textarea id="e_all" placeholder="Any allergies?" class="form-input" rows="2"></textarea>
+                </div>
+
+                <div id="menyeqrab-fields" style="display:none;">
+                    <input type="text" id="m_moth" placeholder="Mother's Name" class="form-input">
+                    <input type="text" id="m_fath" placeholder="Father's Name" class="form-input">
+                    <input type="text" id="m_child" placeholder="Child's Name" class="form-input">
+                    <select id="m_gen" class="form-input"><option>Male</option><option>Female</option></select>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="m_w" placeholder="Weight (kg)" class="form-input">
+                        <input type="text" id="m_h" placeholder="Height (cm)" class="form-input">
+                    </div>
+                    <input type="tel" id="m_phone" placeholder="Phone Number" class="form-input">
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="m_sub" placeholder="Sub-city" class="form-input">
+                        <input type="text" id="m_wor" placeholder="Woreda" class="form-input">
+                    </div>
+                    <input type="text" id="m_house" placeholder="House Number" class="form-input">
+
+                    <label class="field-label">Allergies</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="mall" value="Milk"> Milk</label>
+                        <label><input type="checkbox" name="mall" value="Eggs"> Eggs</label>
+                        <label><input type="checkbox" name="mall" value="Wheat"> Wheat</label>
+                        <label><input type="checkbox" name="mall" value="Soy"> Soy</label>
+                        <label><input type="checkbox" name="mall" value="Peanuts"> Peanuts</label>
+                        <label><input type="checkbox" name="mall" value="Fish"> Fish</label>
+                    </div>
+                    <input type="text" id="m_all_other" placeholder="Other Allergies" class="form-input">
+
+                    <label class="field-label">Nutrient Goals</label>
+<div class="checkbox-group">
+    <label><input type="checkbox" name="mnut" value="Vitamins"> Vitamins</label>
+    <label><input type="checkbox" name="mnut" value="Minerals"> Minerals</label>
+    <label><input type="checkbox" name="mnut" value="Protein"> Protein/Fiber</label>
+</div>
+<input type="text" id="m_nut_other" placeholder="Other Goals" class="form-input">
+
+                    <label class="field-label">Child's Favorites</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="mfav" value="Fish"> Fish</label>
+                        <label><input type="checkbox" name="mfav" value="Beef"> Beef</label>
+                        <label><input type="checkbox" name="mfav" value="Rice"> Rice</label>
+                        <label><input type="checkbox" name="mfav" value="Potato"> Potato</label>
+                        <label><input type="checkbox" name="mfav" value="Carrots"> Carrots</label>
+                        <label><input type="checkbox" name="mfav" value="Pasta"> Pasta</label>
+                    </div>
+                    <input type="text" id="m_fav_other" placeholder="Other Favorites" class="form-input">
+
+                    <label class="field-label">Dislikes</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="mdis" value="Broccoli"> Broccoli</label>
+                        <label><input type="checkbox" name="mdis" value="Avocado"> Avocado</label>
+                        <label><input type="checkbox" name="mdis" value="Beans"> Beans</label>
+                    </div>
+<input type="text" id="m_dis_other" placeholder="Other Dislikes" class="form-input">
+
+                    <label class="field-label">Daily Prep Time</label>
+                    <div class="checkbox-group">
+                        <label><input type="radio" name="mtime" value="1h"> 1 hr</label>
+                        <label><input type="radio" name="mtime" value="2h"> 2 hr</label>
+                        <label><input type="radio" name="mtime" value="3h"> 3 hr</label>
+                    </div>
+
+                    <input type="text" id="m_person" placeholder="Dedicated cook at home?" class="form-input">
+                    <input type="text" id="m_budget" placeholder="Monthly Budget (ETB)" class="form-input">
+                    
+                    <select id="m_buy" class="form-input"><option>Purchase ingredients for me?</option><option>Yes</option><option>No</option></select>
+                    <div style="display: flex; gap: 5px;">
+                        <select id="m_meth" class="form-input"><option>Delivery</option><option>Pickup</option></select>
+                        <select id="m_dur" class="form-input"><option>Once a Month</option><option>Twice a Month</option></select>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="submitForm()">Submit & Continue to Telegram</button>
+                <button type="button" onclick="closeModal()" style="background:none; border:none; width:100%; margin-top:10px; cursor:pointer; color:grey;">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    let selectedPlan = "";
+    let currentBrand = "";
+    
+    // IMPORTANT: Paste your Google Web App URL from Step 2 here
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxXzl3GSmnbjZWaW6pDNvpAjrIk7D8vBrbZEod2ueK1ZfeyZZFnS-W8D50dX9eOptor/exec";
+
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        currentBrand = params.get('brand');
+        if (currentBrand === 'enebla') document.getElementById('enebla-section').style.display = 'block';
+        else if (currentBrand === 'menyeqrab') document.getElementById('menyeqrab-section').style.display = 'block';
+    };
+
+    function openModal(plan) {
+        selectedPlan = plan;
+        document.getElementById('planTitle').innerText = plan;
+        const submitBtn = document.querySelector('.submit-btn');
+
+        if (currentBrand === 'enebla') {
+            document.getElementById('enebla-fields').style.display = 'block';
+            document.getElementById('menyeqrab-fields').style.display = 'none';
+            submitBtn.style.background = 'var(--enebla-green)';
+        } else {
+            document.getElementById('menyeqrab-fields').style.display = 'block';
+            document.getElementById('enebla-fields').style.display = 'none';
+            submitBtn.style.background = 'var(--menyeqrab-orange)';
+        }
+        document.getElementById('orderModal').style.display = 'flex';
+    }
+
+    function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
+
+    // Helper to get checked values for the spreadsheet
+    function getCheckedValues(name) {
+        const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+        return Array.from(checked).map(cb => cb.value).join(", ");
+    }
+
+    async function submitForm() {
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.innerText = "Processing...";
+        submitBtn.disabled = true;
+
+        // 1. Prepare the FULL data object for Google Sheets
+        const fullData = {
+            brand: currentBrand,
+            plan: selectedPlan,
+            parents: currentBrand === 'menyeqrab' ? `${document.getElementById('m_moth').value} & ${document.getElementById('m_fath').value}` : document.getElementById('e_name').value,
+            child: currentBrand === 'menyeqrab' ? document.getElementById('m_child').value : document.getElementById('e_kid').value,
+            phone: currentBrand === 'menyeqrab' ? document.getElementById('m_phone').value : document.getElementById('e_phone').value,
+            address: currentBrand === 'menyeqrab' ? `Subcity: ${document.getElementById('m_sub').value}, Woreda: ${document.getElementById('m_wor').value}, House: ${document.getElementById('m_house').value}` : document.getElementById('e_loc').value,
+            allergies: currentBrand === 'menyeqrab' ? (getCheckedValues('mall') + " " + document.getElementById('m_all_other').value) : document.getElementById('e_all').value,
+            favorites: currentBrand === 'menyeqrab' ? (getCheckedValues('mfav') + " " + document.getElementById('m_fav_other').value) : "N/A",
+            dislikes: currentBrand === 'menyeqrab' ? (getCheckedValues('mdis') + " " + document.getElementById('m_dis_other').value) : "N/A",
+            goals: currentBrand === 'menyeqrab' ? (getCheckedValues('mnut') + " " + document.getElementById('m_nut_other').value) : "N/A",
+            budget: currentBrand === 'menyeqrab' ? document.getElementById('m_budget').value : "N/A",
+            service: currentBrand === 'menyeqrab' ? `${document.getElementById('m_meth').value} | ${document.getElementById('m_dur').value}` : document.getElementById('e_theme').value
+        };
+
+        // 2. Send to Google Sheets (Background)
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', 
+            headers: { 'Content-Type': 'text/plain' }, // Using text/plain avoids "pre-flight" blocks
+            body: JSON.stringify(fullData)
+        });
+        
+        // Wait a tiny bit then redirect to Telegram
+        setTimeout(() => {
+            const tgUsername = "Xphoriaa"; 
+            const shortMsg = `🚀 *New Order: ${selectedPlan}*%0A*Name:* ${fullData.parents}%0A*Phone:* ${fullData.phone}%0A*Address:* ${fullData.address}`;
+            window.location.href = `https://t.me/${tgUsername}?text=${shortMsg}`;
+        }, 500);
+
+        // 3. Redirect to Telegram with SHORT message (Name, Address, Phone)
+        const tgUsername = "Xperiaa"; // Replace with your username
+        const shortMsg = `🚀 *New Order: ${selectedPlan}*%0A*Name:* ${fullData.parents}%0A*Phone:* ${fullData.phone}%0A*Address:* ${fullData.address}`;
+        
+        window.location.href = `https://t.me/${tgUsername}?text=${shortMsg}`;
+    }
+
+    window.onclick = function(e) { if (e.target == document.getElementById('orderModal')) closeModal(); }
+</script>
+</body>
+</html>
